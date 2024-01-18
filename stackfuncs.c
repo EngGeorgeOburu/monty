@@ -10,7 +10,7 @@
  */
 void push(stack_t **stack, char **cmd, unsigned int line_number, int is_stack)
 {
-	if (cmd[1] && !cmd[2])
+	if (cmd[1] && !cmd[2] && _isnumber(cmd[1]))
 	{
 		if (is_stack == 0)
 			add_node_head(stack, atoi(cmd[1]));
@@ -66,4 +66,22 @@ void print_head(stack_t **stack, unsigned int line_number)
 		printerr(line_number, "can't pint, stack empty");
 	}
 	printf("%d\n", (*stack)->n);
+}
+
+/**
+ * _isnumber - check if string is a valid number
+ * @str: char pointer
+ * Return: 1 if str is a valid number, 0 otherwise
+ */
+int _isnumber(char *str)
+{
+	if (!str || !*str)
+		return (0);
+	while (*str)
+	{
+		if (isdigit(*str++) == 0)
+			return (0);
+	}
+
+	return (1);
 }

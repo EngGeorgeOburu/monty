@@ -70,6 +70,7 @@ void pop(stack_t **stack, unsigned int line_number);
 void print_stack(stack_t **stack, unsigned int line_number);
 void print_head(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *stack);
+int _isnumber(char *str);
 
 /* monty functions */
 void pall(stack_t **stack, unsigned int line_number);
