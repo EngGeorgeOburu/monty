@@ -16,7 +16,7 @@ int get_inputs(FILE *stream, stack_t **stack)
 
 	do {
 		nread = getline(&buffer, &size, stream);
-		if (nread >= 0 && buffer[0] != '#')
+		if (nread >= 0)
 		{
 			hasred = 1;
 			toks = _strtok(buffer, nread + 1, " \n\t");

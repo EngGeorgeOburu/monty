@@ -10,7 +10,7 @@
  */
 void push(stack_t **stack, char **cmd, unsigned int line_number, int is_stack)
 {
-	if (cmd[1] && !cmd[2] && _isnumber(cmd[1]))
+	if (cmd[1] && _isnumber(cmd[1]))
 	{
 		if (is_stack == 0)
 			add_node_head(stack, atoi(cmd[1]));

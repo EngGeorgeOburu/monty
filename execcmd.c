@@ -41,7 +41,7 @@ int runcmd(char **cmd, unsigned int line_number, stack_t **stack, int is_stack)
 		{NULL, NULL}
 	};
 
-	if (strcmp("nop", cmd[0]) == 0 && cmd[1] == NULL)
+	if (strcmp("nop", cmd[0]) == 0)
 		return (0);
 	if (strcmp("push", cmd[0]) == 0)
 	{
@@ -52,7 +52,7 @@ int runcmd(char **cmd, unsigned int line_number, stack_t **stack, int is_stack)
 	{
 		while (flist[i].opcode != NULL)
 		{
-			if (strcmp(flist[i].opcode, cmd[0]) == 0 && cmd[1] == NULL)
+			if (strcmp(flist[i].opcode, cmd[0]) == 0)
 			{
 				flist[i].f(stack, line_number);
 				return (0);
@@ -62,9 +62,7 @@ int runcmd(char **cmd, unsigned int line_number, stack_t **stack, int is_stack)
 	}
 	fprintf(stderr, "L%u: unknown instruction", line_number);
 	status = 1;
-	while (cmd && *cmd)
-		fprintf(stderr, " %s", *cmd++);
-	fprintf(stderr, "\n");
+	fprintf(stderr, " %s\n", *cmd);
 
 	return (1);
 }
