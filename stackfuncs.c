@@ -20,6 +20,7 @@ void push(stack_t **stack, char **cmd, unsigned int line_number, int is_stack)
 	else
 	{
 		printerr(line_number, "usage: push integer");
+		status = EXIT_FAILURE;
 	}
 }
 
@@ -35,6 +36,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	if (status < 0)
 	{
 		printerr(line_number, "can't pop an empty stack");
+		status = EXIT_FAILURE;
 	}
 }
 
@@ -50,6 +52,7 @@ void print_stack(stack_t **stack, unsigned int line_number)
 	if (status < 0)
 	{
 		printerr(line_number, "Unknown error");
+		status = EXIT_FAILURE;
 	}
 }
 
@@ -64,6 +67,7 @@ void print_head(stack_t **stack, unsigned int line_number)
 	if (!stack || !*stack)
 	{
 		printerr(line_number, "can't pint, stack empty");
+		status = EXIT_FAILURE;
 	}
 	printf("%d\n", (*stack)->n);
 }
