@@ -19,8 +19,11 @@ int main(int argc, char **argv)
 		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	execcmd(argv[1], &stack);
+	if(execcmd(argv[1], &stack) == 1)
+	{
+		free_stack(stack);
+		exit(EXIT_FAILURE);
+	}
 	free_stack(stack);
-
 	return (status);
 }
