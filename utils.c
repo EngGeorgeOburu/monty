@@ -5,7 +5,7 @@
  * @line: single line read from stdin
  * @size: size of line
  * @delim: delimiters
- * Return: Int, number of toks
+ * Return: Int, number of tokens
  */
 int gettoksnum(char *line, int size, char *delim)
 {
@@ -36,7 +36,7 @@ int gettoksnum(char *line, int size, char *delim)
  * @line: cmd red from stdin
  * @size: size of @line
  * @delim: token delimiter
- * Return: array of ptrs to tokens
+ * Return: array of pointers to tokens
  */
 char **_strtok(char *line, int size, char *delim)
 {
