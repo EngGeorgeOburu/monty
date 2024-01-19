@@ -49,8 +49,10 @@ char **_strtok(char *line, int size, char *delim)
 
 	toks = malloc(sizeof(char *) * (toksnum + 1));
 	if (!toks)
+	{
+		status = 1;
 		return (NULL);
-
+	}
 	tok = strtok(line, delim);
 	i = 0;
 	while (tok != NULL)

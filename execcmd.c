@@ -10,10 +10,16 @@ int execcmd(char *filename, stack_t **stack)
 {
 	FILE *stream;
 
-	stream = fopen(filename, "r");
+	if (stack == NULL)
+	{
+		printerr(0, "Error: Stack address can't be null");
+		return (status);
+	}
 
+	stream = fopen(filename, "r");
 	if (stream == NULL)
 	{
+		status = 1;
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		return (status);
 	}
@@ -60,8 +66,8 @@ int runcmd(char **cmd, unsigned int line_number, stack_t **stack, int is_stack)
 			i++;
 		}
 	}
-	fprintf(stderr, "L%u: unknown instruction", line_number);
 	status = 1;
+	fprintf(stderr, "L%u: unknown instruction", line_number);
 	fprintf(stderr, " %s\n", *cmd);
 
 	return (1);

@@ -8,7 +8,7 @@
  */
 int get_inputs(FILE *stream, stack_t **stack)
 {
-	size_t size = 0, hasred = 0;
+	size_t size = 0;
 	ssize_t nread;
 	char *buffer = NULL, **toks;
 	unsigned int line_number = 1;
@@ -18,8 +18,12 @@ int get_inputs(FILE *stream, stack_t **stack)
 		nread = getline(&buffer, &size, stream);
 		if (nread >= 0)
 		{
-			hasred = 1;
 			toks = _strtok(buffer, nread + 1, " \n\t");
+			if (toks == NULL && status != 0)
+			{
+				printerr(0, "Error: malloc failed");
+				return (status);
+			}
 			tmp = isstack(toks);
 			if (tmp >= 0)
 			{
@@ -36,10 +40,6 @@ int get_inputs(FILE *stream, stack_t **stack)
 				}
 			}
 			line_number++;
-		}
-		else if (nread < 0 && !hasred)
-		{
-			printerr(line_number, "Failed to read instrucation");
 		}
 	} while (nread != -1);
 	free(buffer);

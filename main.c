@@ -16,10 +16,10 @@ int main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		fprintf(stderr, "USAGE: monty file\n");
+		printerr(0, "USAGE: monty file");
 		exit(EXIT_FAILURE);
 	}
-	if(execcmd(argv[1], &stack) == 1)
+	if (execcmd(argv[1], &stack) == 1)
 	{
 		free_stack(stack);
 		exit(EXIT_FAILURE);

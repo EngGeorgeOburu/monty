@@ -34,6 +34,8 @@ stack_t *add_node_head(stack_t **head, int n)
 	stack_t *new_node;
 	stack_t *tmp;
 
+	if (!head)
+		return (NULL);
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 		return (NULL);
@@ -60,9 +62,9 @@ int delete_node_head(stack_t **head)
 {
 	stack_t *tmp;
 
-	tmp = *head;
-	if (tmp)
+	if (head && *head)
 	{
+		tmp = *head;
 		*head = tmp->next;
 		if (tmp->next)
 			tmp->next->prev = NULL;
@@ -84,6 +86,8 @@ stack_t *add_node_end(stack_t **head, int n)
 	stack_t *new_node;
 	stack_t *tmp;
 
+	if (!head)
+		return (NULL);
 	new_node = malloc(sizeof(stack_t));
 	if (!new_node)
 		return (NULL);

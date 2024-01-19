@@ -8,6 +8,9 @@
  */
 void printerr(unsigned int line_number, const char *msg)
 {
-	fprintf(stderr, "L%u: %s\n", line_number, msg);
+	if (line_number != 0)
+		fprintf(stderr, "L%u: %s\n", line_number, msg);
+	else
+		fprintf(stderr, "%s\n", msg);
 	status = 1;
 }
