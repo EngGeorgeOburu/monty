@@ -25,7 +25,7 @@ int get_inputs(FILE *stream, stack_t **stack)
 				return (status);
 			}
 			tmp = isstack(toks);
-			if (tmp >= 0)
+			if (tmp == 0 || tmp == 1)
 			{
 				is_stack = tmp;
 				free_toks(toks);
@@ -56,9 +56,9 @@ int isstack(char **toks)
 {
 	if (!toks || !*toks)
 		return (-1);
-	if (strcmp(toks[0], "stack") == 0 && toks[1] == NULL)
+	if (strcmp(toks[0], "stack") == 0)
 		return (0);
-	if (strcmp(toks[0], "queue") == 0 && toks[1] == NULL)
+	if (strcmp(toks[0], "queue") == 0)
 		return (1);
 	return (-1);
 }

@@ -43,6 +43,8 @@ void pop(stack_t **stack, unsigned int line_number)
  */
 void print_stack(stack_t **stack, unsigned int line_number)
 {
+	if (!stack || !*stack)
+		return;
 	print_list(*stack);
 	if (status < 0)
 	{
@@ -73,12 +75,16 @@ void print_head(stack_t **stack, unsigned int line_number)
  */
 int _isnumber(char *str)
 {
+	int i;
+
 	if (!str || !*str)
 		return (0);
-	while (*str)
+	i = 0;
+	while (str[i])
 	{
-		if (isdigit(*str++) == 0)
+		if (isdigit(str[i]) == 0 && str[i] != '+' && str[i] != '-')
 			return (0);
+		i++;
 	}
 
 	return (1);
